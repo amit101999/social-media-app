@@ -1,0 +1,16 @@
+{
+  "name": "social-media",
+  "version": "1.0.0",
+  "description": "my own social media web app only using backend framework",
+  "main": "index.js",
+  "author": "amit thakur",
+  "license": "MIT",
+  "scripts": {
+    "dev" : "nodemon index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^2.0.22"
+  }
+
+}
