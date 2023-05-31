@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%- style %>
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- calling the header part -->
+    <!-- this is the common part -->
+    <%- include("_header") %>
+
+    <!-- this body all the things renders by the conrteollers -->
+    <!-- this part will be varibale so it will render accordingly to the controllers -->
+    <%- body %>
+
+    <!-- calling the footer part -->
+    <!-- this is the common part -->
+    <%- include("_footer") %>
+
+    <!-- here the script will be loaded the link of the script is written the pages like home or user_profile -->
+    <%- script %>
+  </body>
+</html>
