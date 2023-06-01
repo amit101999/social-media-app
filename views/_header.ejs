@@ -1,2 +1,10 @@
 <!-- partials pages which is a common page -->
-<header>Header<Header></Header></header>
+<link rel="stylesheet" href="/css/header.css" />
+<header>
+  <h1>THE SOCIAL</h1>
+  <% if (locals.user){ %>
+  <a href="/user/sign-out">Log out</a>
+  <%} else { %>
+  <a href="/user/sign-in">Log in</a>
+  <% } %>
+</header>

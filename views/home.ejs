@@ -1,4 +1,10 @@
 <!-- this page will be render in the body tag of the layouts.ejs -->
 <!-- link is here also we can metion the script tag in last  -->
 <link rel="stylesheet" href="/css/layout.css" />
-<h1>from Home ejs page <%=title %></h1>
+<section id="feed-posts">
+  <h4>posts</h4>
+  <form action="" id="new-form-post" method="POST">
+    <textarea name="content" id="" cols="30" rows="3"></textarea>
+    <input type="submit" value="Submit" />
+  </form>
+</section>

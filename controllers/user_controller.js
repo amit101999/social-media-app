@@ -8,11 +8,19 @@ module.exports.profile = (req, res) => {
 
 //render singUp page
 module.exports.signUp = (req, res) => {
+  //isAuthenticated is a function which have user state that is its sign in or not
+  if (req.isAuthenticated()) {
+    return res.redirect("/user/profile");
+  }
   return res.render("user_sign_up");
 };
 
 //render singIn page
 exports.signIn = async (req, res) => {
+  //isAuthenticated is a function which have user state that is its sign in or not
+  if (req.isAuthenticated()) {
+    return res.redirect("/user/profile");
+  }
   return res.render("user_sign_in");
 };
 
@@ -35,5 +43,15 @@ exports.createUser = async (req, res) => {
 };
 
 exports.createSession = async (req, res) => {
-  return res.send("session created");
+  return res.redirect("/");
+};
+
+exports.destroySession = (req, res, next) => {
+  req.logout((err) => {
+    if (err) {
+      console.log("error  int logout : ", err);
+      next(err);
+    }
+  });
+  return res.redirect("/");
 };
