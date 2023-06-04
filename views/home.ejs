@@ -18,33 +18,9 @@
 
   <div id="post-list-container">
     <ul>
-      <% posts.map( item =>{ %>
-      <li><%= item.content %></li>
-      <li><%= item.user.name %></li>
-
-      <div id="post-comment">
-        <% if(locals.user){ %>
-        <form action="/comment/create" method="POST">
-          <input
-            type="text"
-            name="content"
-            placeholder="write comment on the post"
-            required
-          />
-          <input type="hidden" name="post" value="<%= item._id %>" />
-          <input type="submit" value="Add comment" />
-        </form>
-        <% }%>
-        <div class="post-comment-list">
-          <ul id="post-comment- <%= item._id %>">
-            <% item.comments.map( (comment) =>{ %>
-            <li><%= comment.content %></li>
-            <li><%= item.user.name %></li>
-            <% }) %>
-          </ul>
-        </div>
-      </div>
-      <% }) %>
+      <% for( item of posts){ %>
+      <!-- if user is logged in and the current user is the one who is deleting their post not someone else is deting post -->
+      <%- include('_post') %> <% } %>
     </ul>
   </div>
 </section>
