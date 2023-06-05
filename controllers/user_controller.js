@@ -24,7 +24,7 @@ exports.updateUser = async (req, res) => {
   try {
     if (req.user.id == req.params.id) {
       const user = await User.findByIdAndUpdate(req.params.id, req.body);
-      return res.redirect("/");
+      return res.redirect("back");
     } else {
       console.log("u can only updated ur user profile");
       return res.status(401).send("unauthorized");
@@ -72,6 +72,9 @@ exports.createUser = async (req, res) => {
 };
 
 exports.createSession = async (req, res) => {
+  //created flash message
+  req.flash("success", "LoggedIn Successfully");
+
   return res.redirect("/");
 };
 
@@ -82,5 +85,7 @@ exports.destroySession = (req, res, next) => {
       next(err);
     }
   });
+  req.flash("success", "Loggout  Successfully");
+  //created flash message
   return res.redirect("/");
 };

@@ -5,6 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
     <link rel="stylesheet" href="/css/header.css" />
 
     <%- style %>
@@ -12,7 +17,7 @@
   <body style="margin: 0px; padding: 0px; box-sizing: border-box">
     <!-- calling the header part -->
     <!-- this is the common part -->
-    <%- include("_header") %>
+    <%- include("_header") -%>
 
     <!-- this body all the things renders by the conrteollers -->
     <!-- this part will be varibale so it will render accordingly to the controllers -->
@@ -24,5 +29,27 @@
 
     <!-- here the script will be loaded the link of the script is written the pages like home or user_profile -->
     <%- script %>
+
+    <script>
+        <% if(flash.success && flash.success.length > 0) { %>
+           new Noty({
+             theme: "relax",
+             text: "<%= flash.success %>",
+             type: "success",
+             layout: "topRight",
+             timeout: 1500,
+           }).show();
+      <%   } %>
+
+      <% if(flash.error && flash.error.length > 0) { %>
+           new Noty({
+             theme: "relax",
+             text: "<%= flash.error %>",
+             type: "error",
+             layout: "topRight",
+             timeout: 1500,
+           }).show();
+      <%   } %>
+    </script>
   </body>
 </html>

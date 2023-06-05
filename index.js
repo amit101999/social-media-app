@@ -3,13 +3,21 @@ const cookieParser = require("cookie-parser");
 const app = express();
 const PORT = 8000;
 
+//session
 const session = require("express-session");
 const passport = require("passport");
 const passportLocal = require("./config/passport_local_strategy");
 
+// for stroing cookies on mongoDb
 const MongoStore = require("connect-mongo");
 
+//Sass middleware
 const sassMiddleware = require("node-sass-middleware");
+
+//flash message
+const flash = require("connect-flash");
+
+const cutsomMiddleware = require("./config/middleware");
 
 //DB
 const db = require("./config/mongoose");
@@ -28,7 +36,10 @@ app.use(
   })
 );
 
+//for corverting upcoming request data to readable data
 app.use(express.urlencoded());
+
+// for cookies
 app.use(cookieParser());
 
 //For Static files
@@ -70,9 +81,16 @@ app.use(
   })
 );
 
+//intialize passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
+
+// setting current user to req.user
 app.use(passport.setAuthenticatedUser);
+
+//put after session is initalize since this uses session
+app.use(flash());
+app.use(cutsomMiddleware.setFlash);
 
 //Routes
 app.use("/", mainroutes);

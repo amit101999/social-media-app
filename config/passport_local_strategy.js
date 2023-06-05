@@ -6,11 +6,14 @@ passport.use(
   new LocalStrategy(
     {
       usernameField: "email", // mention schema user unique field
+      passReqToCallback: true, // this helps to take first argument as req in callback
     },
-    async (email, password, done) => {
+    //here taking req as first argument
+    async (req, email, password, done) => {
       const user = await User.findOne({ email: email });
       if (!user || user.password !== password) {
-        console.log("invalid user name or password");
+        // console.log("invalid user name or password");
+        req.flash("error", "Invalid user Name or Password");
         return done(null, false);
         //done takes 2 agruments error and authentication status that to be send forward
       }
@@ -27,7 +30,7 @@ passport.serializeUser((user, done) => {
 //when browser sends request to server deserilize the cookie key
 passport.deserializeUser(async (id, done) => {
   try {
-    const user = await User.findOne(id);
+    const user = await User.findById(id);
     return done(null, user);
   } catch (err) {
     console.log("user not found ");
