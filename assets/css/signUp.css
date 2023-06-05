@@ -1,0 +1,97 @@
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1;
+  /* Firefox */ }
+
+section {
+  background-color: #B6C3D3;
+  height: calc(100vh - 100px); }
+  section p {
+    font-size: 1rem;
+    font-weight: bolder;
+    color: white;
+    font-style: italic;
+    margin: 0px;
+    padding: 0px;
+    margin-left: 10%;
+    font-size: 1.5rem;
+    padding-top: 20px; }
+  section .signIn {
+    padding-top: 10px;
+    padding-bottom: 10px; }
+  section .auth-page {
+    width: 80%;
+    display: flex;
+    margin: auto;
+    border-radius: 15px;
+    background-color: #b6c3d3;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    height: 70vh; }
+  section .left-section {
+    flex-basis: 40%;
+    border: none;
+    border-right: 1px solid black; }
+  section .right-section {
+    flex-basis: 60%;
+    border-left: 1px solid black; }
+    section .right-section form {
+      margin-top: 50px;
+      margin-left: 50px; }
+      section .right-section form .forgotPassword {
+        margin-top: 0pxs; }
+    section .right-section div input {
+      width: 50%;
+      height: 30px;
+      margin-bottom: 30px;
+      border: none;
+      outline: none;
+      border-bottom: 2px solid white;
+      border-bottom-left-radius: 5px;
+      background-color: #B6C3D3;
+      font-size: 1rem;
+      color: white; }
+    section .right-section div button {
+      width: 50%;
+      height: 35px;
+      background-color: black;
+      outline: none;
+      margin-bottom: 5px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 4px; }
+      section .right-section div button input {
+        width: 100%;
+        height: 32px;
+        background-color: black;
+        color: white;
+        font-size: 1.2rem;
+        border-bottom: none; }
+      section .right-section div button input:hover {
+        text-decoration: underline;
+        cursor: pointer; }
+    section .right-section div .forgotPassword {
+      margin-left: 210px; }
+      section .right-section div .forgotPassword a {
+        color: white;
+        font-size: 1.2rem; }
+      section .right-section div .forgotPassword a:hover {
+        font-weight: bolder; }
+    section .right-section .create-btn {
+      display: flex; }
+      section .right-section .create-btn P {
+        color: white;
+        font-size: 1.2rem;
+        font-weight: normal;
+        margin-left: 50px; }
+      section .right-section .create-btn a {
+        width: fit-content;
+        margin-top: 20px;
+        color: black;
+        font-size: 1.2rem;
+        margin-left: 5px;
+        text-decoration: none;
+        border-bottom: 2px solid black; }
+      section .right-section .create-btn a:hover {
+        border-bottom: none;
+        cursor: pointer; }

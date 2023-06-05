@@ -1,10 +1,14 @@
 <!-- partials pages which is a common page -->
-<link rel="stylesheet" href="/css/header.css" />
+
 <header>
-  <h1>THE SOCIAL</h1>
+  <p class="app-Name">THE SOCIAL</p>
   <% if (locals.user){ %>
-  <a href="/user/sign-out">Log out</a>
+  <button class="logout-btn">
+    <a href="/user/sign-out">Log out</a>
+  </button>
   <%} else { %>
-  <a href="/user/sign-in">Log in</a>
+  <button class="login-btn">
+    <a href="/user/sign-in">Log in</a>
+  </button>
   <% } %>
 </header>

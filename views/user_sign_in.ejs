@@ -1,12 +1,44 @@
-<h1>sign in page</h1>
+<link rel="stylesheet" href="/css/signUp.css" />
+<section>
+  <p class="signIn">Sign In</p>
+  <div class="auth-page lg">
+    <div class="left-section"></div>
+    <div class="right-section">
+      <div class="app-logo"></div>
+      <div class="app-tagline"></div>
+      <div class="user-details">
+        <form action="/user/create-session" method="POST">
+          <div class="email">
+            <input
+              type="email"
+              placeholder="Enter the Email"
+              name="email"
+              required
+            />
+          </div>
+          <div class="pasword">
+            <input
+              type="password"
+              placeholder="Enter the Password"
+              name="password"
+              required
+            />
+          </div>
+          <div>
+            <button>
+              <input class="login" type="submit" value="Login Now" />
+            </button>
+          </div>
+        </form>
+        <div class="forgotPassword">
+          <a href="/user/sign-up">Forgot Password </a>
+        </div>
 
-<form action="/user/create-session" method="POST">
-  <input type="email" placeholder="Enter the Email" name="email" required />
-  <input
-    type="password"
-    placeholder="Enter the Password"
-    name="password"
-    required
-  />
-  <input type="submit" value="Sign In" />
-</form>
+        <div class="create-btn">
+          <p>dont have Account?</p>
+          <a href="/user/sign-up">Register Now </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

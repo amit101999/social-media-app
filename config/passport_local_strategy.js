@@ -26,12 +26,13 @@ passport.serializeUser((user, done) => {
 
 //when browser sends request to server deserilize the cookie key
 passport.deserializeUser(async (id, done) => {
-  const user = await User.findOne(id);
-  if (!user) {
+  try {
+    const user = await User.findOne(id);
+    return done(null, user);
+  } catch (err) {
     console.log("user not found ");
     return done(err);
   }
-  return done(null, user);
 });
 
 passport.checkAuthention = (req, res, next) => {

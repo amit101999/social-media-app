@@ -4,9 +4,24 @@ header {
   justify-content: space-between;
   padding: 10px;
   height: 50px;
+  width: 100%vw;
   align-items: center;
-  background-color: aqua;
-  color: white !important; }
-  header a {
-    color: red;
-    font-size: 25px; }
+  background-color: #B6C3D3;
+  color: #000000; }
+  header p {
+    font-size: 2rem;
+    font-weight: bolder;
+    text-decoration: underline; }
+  header button {
+    width: 100px;
+    height: 40px;
+    background-color: #000000;
+    border: none;
+    border-radius: 5px; }
+    header button a {
+      color: white;
+      font-size: 1rem; }
+    header button a:hover {
+      text-decoration: none; }
+  header button:hover {
+    opacity: 0.8; }
