@@ -1,11 +1,20 @@
+<link rel="stylesheet" href="/css/posts.css" />
 <% if(locals.user && locals.user.id === item.user.id){ %>
-<li>
-  Delete Post
-  <a href="/posts/delete/<%= item._id %>">delete</a>
-</li>
+
+<div class="userPost-container">
+  <div class="user-content">
+    <p>Posted By : <a href=""> <%= item.user.name %> </a></p>
+    <p><p>
+      <%= item.content %>
+    </p></p>
+  </div>
+  <div class="deleteBtn">
+      
+      <a href="/posts/delete/<%= item._id %>">Delete Post</a>
+  </div>
+
+
 <% } %>
-<li><%= item.content %></li>
-<li><%= item.user.name %></li>
 
 <div id="post-comment">
   <% if(locals.user){ %>
@@ -21,8 +30,10 @@
   </form>
   <% }%>
   <div class="post-comment-list">
-    <ul id="post-comment- <%= item._id %>">
+    <ul id="post-comment- <%= item._id %>" class="comment">
       <% for(comment of item.comments){ %> <%- include("_comment") %> <% } %>
     </ul>
   </div>
+</div>
+
 </div>

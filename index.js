@@ -2,6 +2,7 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const app = express();
 const PORT = 8000;
+require("dotenv").config();
 
 //session
 const session = require("express-session");
@@ -71,7 +72,8 @@ app.use(
     //mongo session to store cookie in db
     store: MongoStore.create(
       {
-        mongoUrl: "mongodb+srv://amit:amit1999@portofolio.o3hbwpi.mongodb.net/",
+        mongoUrl:
+          "mongodb+srv://amit:amit1999@social-media.dap7qon.mongodb.net/",
         autoRemove: "disabled",
       },
       (err) => {
@@ -96,9 +98,9 @@ app.use(cutsomMiddleware.setFlash);
 app.use("/", mainroutes);
 
 //Server configuration
-app.listen(PORT, (err) => {
+app.listen(process.env.PORT, (err) => {
   if (err) {
     console.error("error : ", err);
   }
-  console.log(`server started at ${PORT}`);
+  console.log(`server started at ${process.env.PORT}`);
 });

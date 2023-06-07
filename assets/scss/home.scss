@@ -1,61 +1,64 @@
-:root{
-
-  --heading-text-size:3rem;
-
-  ---small-text-size:1rem;
-  --medium-text-size:1.4rem;
-  ---large-text-size:2rem;
-  
-}
 
 
 *{
   margin: 0px;
   padding: 0px;
 }
-.home{
-  background-color: #B6C3D3;
 
 
- #feed-posts{
-  border:1px solid red;
-  width: 60%;
-  margin: auto;
-  p{
-    font-size:2rem;
-    
-  }
-  form{
-    margin-top: 10px;
-    padding: 0 20px;
-    div{
-      border: 2px solid red;
-      border-radius: 10px;
-      textarea{
-        width: 100%;
-        border: none;
-        border-bottom: 2px solid green;
-        background-color: #B6C3D3;
-        opacity: 0.5;
-          
+.timeline {
+  display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin:auto;
+   
+    .main{
+      flex-basis: 80%;
+      padding-top: 20px;
+
+      #user-tag{
+        font-weight: bold;
+        font-size: var(--medium-text-size);
+        text-align: center;
       }
-    }
-    input{
-      margin: 10px 0 0 85%;
-      border-radius: 10px;
-      font-size: 15px;
-      width: 7rem;
-      height: 30px;
-    }
-  }
- }
 
-  .main {
-    display: flex;
-      border: 1px solid red;
-      width: 80%;
-      margin:auto;
-  }
+      #feed-posts{
+          margin:auto;
+            width: 40%;
+            margin-top: 30px;
+          padding: 10px;
+          border-radius: 8px;
+          border: 2px solid #5D656A ;
+            box-shadow: 7px 5px 8px 5px rgba(90,98,104,1);
+
+            form{
+              margin-top: 20px;
+                textarea{
+                  border: none;
+                }
+                input{
+                  border:none;
+                  background-color: black;
+                  color: white;
+                  height :fit-content;
+                  border-radius: 10px ;
+                  padding: 0.5rem 0.5rem;
+                  font-size:var(---small-text-size);
+                  width: fit-content;
+                  margin-top: 10px;
+                }
+            }
+        }
+        #post-container{
+          
+          margin:auto;
+          margin-top: 30px;
+          width: 80%;
+        }
+    }
+    .user-friends{
+      flex-basis: 20%;
+    }
 }
 
 

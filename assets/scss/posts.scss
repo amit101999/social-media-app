@@ -1,0 +1,59 @@
+:root{
+
+    --heading-text-size:3rem;
+    ---small-text-size:1rem;
+    --medium-text-size:1.4rem;
+    --large-text-size:2rem;
+    
+  }
+
+.userPost-container{
+    // border:2px solid red;
+    margin-bottom: 20px;
+    padding:10px;
+    box-shadow: 7px 5px 8px 5px rgba(90,98,104,1);
+    .user-content{
+        p{  
+          a{
+            font-size:25px;
+            text-align: left;
+            font-weight: bold;
+          }
+          p{
+              text-align: center;
+              font-size:35px;
+              text-align: left;
+              font-weight: bold;
+            }
+        }
+    }
+    .deleteBtn{
+      float: right;
+    }
+
+    #post-comment{
+      margin-top: 20px;
+      form{
+        input{
+          font-size:var(---small-text-size);
+          height: fit-content;
+          padding:5px 0px;
+        }
+        input:last-child{
+          font-size:var(---small-text-size);
+          height: fit-content;
+          padding:2px 2px;
+          border: 2px solid grey;
+          border-radius: 3px;
+        }
+      }
+        .post-comment-list{
+          ul{
+            li{
+              font-size: var(---small-text-size);
+                margin-top:5px;
+            }
+          }
+        }
+    }
+}

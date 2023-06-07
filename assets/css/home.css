@@ -1,41 +1,44 @@
-:root {
-  --heading-text-size:3rem;
-  ---small-text-size:1rem;
-  --medium-text-size:1.4rem;
-  ---large-text-size:2rem; }
-
 * {
   margin: 0px;
   padding: 0px; }
 
-.home {
-  background-color: #B6C3D3; }
-  .home #feed-posts {
-    border: 1px solid red;
-    width: 60%;
-    margin: auto; }
-    .home #feed-posts p {
-      font-size: 2rem; }
-    .home #feed-posts form {
-      margin-top: 10px;
-      padding: 0 20px; }
-      .home #feed-posts form div {
-        border: 2px solid red;
-        border-radius: 10px; }
-        .home #feed-posts form div textarea {
-          width: 100%;
+.timeline {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin: auto; }
+  .timeline .main {
+    flex-basis: 80%;
+    padding-top: 20px; }
+    .timeline .main #user-tag {
+      font-weight: bold;
+      font-size: var(--medium-text-size);
+      text-align: center; }
+    .timeline .main #feed-posts {
+      margin: auto;
+      width: 40%;
+      margin-top: 30px;
+      padding: 10px;
+      border-radius: 8px;
+      border: 2px solid #5D656A;
+      box-shadow: 7px 5px 8px 5px #5a6268; }
+      .timeline .main #feed-posts form {
+        margin-top: 20px; }
+        .timeline .main #feed-posts form textarea {
+          border: none; }
+        .timeline .main #feed-posts form input {
           border: none;
-          border-bottom: 2px solid green;
-          background-color: #B6C3D3;
-          opacity: 0.5; }
-      .home #feed-posts form input {
-        margin: 10px 0 0 85%;
-        border-radius: 10px;
-        font-size: 15px;
-        width: 7rem;
-        height: 30px; }
-  .home .main {
-    display: flex;
-    border: 1px solid red;
-    width: 80%;
-    margin: auto; }
+          background-color: black;
+          color: white;
+          height: fit-content;
+          border-radius: 10px;
+          padding: 0.5rem 0.5rem;
+          font-size: var(---small-text-size);
+          width: fit-content;
+          margin-top: 10px; }
+    .timeline .main #post-container {
+      margin: auto;
+      margin-top: 30px;
+      width: 80%; }
+  .timeline .user-friends {
+    flex-basis: 20%; }
