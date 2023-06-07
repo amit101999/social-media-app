@@ -3,6 +3,8 @@ const cookieParser = require("cookie-parser");
 const app = express();
 const PORT = 8000;
 require("dotenv").config();
+//DB
+const db = require("./config/mongoose");
 
 //session
 const session = require("express-session");
@@ -19,9 +21,6 @@ const sassMiddleware = require("node-sass-middleware");
 const flash = require("connect-flash");
 
 const cutsomMiddleware = require("./config/middleware");
-
-//DB
-const db = require("./config/mongoose");
 
 //acquiring routes
 const mainroutes = require("./routes/index");
@@ -73,7 +72,7 @@ app.use(
     store: MongoStore.create(
       {
         mongoUrl:
-          "mongodb+srv://amit:amit1999@social-media.dap7qon.mongodb.net/",
+          "mongodb+srv://amit:amit@social-media-app.leh27va.mongodb.net/",
         autoRemove: "disabled",
       },
       (err) => {
