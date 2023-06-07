@@ -3,9 +3,9 @@
 <link rel="stylesheet" href="/css/home.css" />
 <div class="timeline">
   <section class="main">
+    <% if(locals.user){ %>
     <p id="user-tag">Time Line</p>
     <section id="feed-posts">
-      <% if(locals.user){ %>
       <form action="/posts/create" id="new-form-post" method="POST">
         <div class="textarea">
           <textarea

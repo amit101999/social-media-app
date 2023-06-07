@@ -4,6 +4,12 @@ const User = require("../models/user");
 // module.exports.home = (req, res) => {};
 // or exports.home are same
 exports.home = async (req, res) => {
+  if (!req.user) {
+    return res.render("user_sign_in", {
+      title: "social media",
+    });
+  }
+
   try {
     const posts = await Post.find()
       .populate("user")
