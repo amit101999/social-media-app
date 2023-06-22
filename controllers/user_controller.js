@@ -1,6 +1,8 @@
 // module.exports.function name is same as exports.function
 
 const User = require("../models/user");
+const fs = require("fs");
+const path = require("path");
 
 module.exports.profile = async (req, res) => {
   try {
@@ -23,7 +25,33 @@ exports.updateUser = async (req, res) => {
   // checking if current user is the one who is updating its form not by someone else
   try {
     if (req.user.id == req.params.id) {
-      const user = await User.findByIdAndUpdate(req.params.id, req.body);
+      const user = await User.findByIdAndUpdate(req.params.id);
+      // before multer we can read body but after multer we cant read body directly
+      User.uploadedAvatar(req, res, (err) => {
+        if (err) {
+          console.log("error in uplaoding image:", err);
+        }
+        //updating profile
+        user.name = req.body.name;
+        user.email = req.body.email;
+
+        //checking if file field have some value
+        if (req.file) {
+          //checking if user have avatar and that avatar is already exsist  or not
+          if (
+            user.avatar &&
+            fs.existsSync(path.join(__dirname, "..", user.avatar))
+          ) {
+            // delete if user have already avatar
+            fs.unlinkSync(path.join(__dirname, "..", user.avatar));
+          }
+
+          // saving path of the avatar
+          user.avatar = User.avatarPath + "/" + req.file.filename;
+        }
+        user.save();
+      });
+      console.log("user :  ", user);
       return res.redirect("back");
     } else {
       console.log("u can only updated ur user profile");

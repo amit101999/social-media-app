@@ -10,6 +10,8 @@ const db = require("./config/mongoose");
 const session = require("express-session");
 const passport = require("passport");
 const passportLocal = require("./config/passport_local_strategy");
+const passportJWT = require("./config/passport-jwt-strategy");
+const passportGoogle = require("./config/passport-google-Oauth2-Strategy");
 
 // for stroing cookies on mongoDb
 const MongoStore = require("connect-mongo");
@@ -44,6 +46,8 @@ app.use(cookieParser());
 
 //For Static files
 app.use(express.static("./assets"));
+//make the uploads path availabel to the browser
+app.use("/upload", express.static(__dirname + "/upload"));
 
 // EJS Layout
 const expressLayouts = require("express-ejs-layouts");
@@ -72,7 +76,7 @@ app.use(
     store: MongoStore.create(
       {
         mongoUrl:
-          "mongodb+srv://amit:amit@social-media-app.leh27va.mongodb.net/",
+          "mongodb+srv://amit:amit1999@social-media-app.leh27va.mongodb.net/",
         autoRemove: "disabled",
       },
       (err) => {

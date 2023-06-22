@@ -1,26 +1,40 @@
-const comment = require("../models/comment");
 const Comment = require("../models/comment");
 const Post = require("../models/posts");
+// const { newComment } = require("../mailers/comments_mailer");
+const commnetEmailMailer = require("../mailers/comments_mailer");
+const queue = require("../config/kue");
+const commnetEmailWorker = require("../workers/comment_email");
 
 exports.createComment = async (req, res) => {
   try {
     const Userpost = await Post.findById(req.body.post);
 
     if (Userpost) {
-      const comment = await Comment.create({
+      let comment = await Comment.create({
         content: req.body.content,
         post: req.body.post,
         user: req.user._id,
       });
-      console.log(comment);
-      if (!comment) {
-        console.log("error in posting commnet ");
-        res.redirect("/");
-      }
-
       await Userpost.comments.push(comment);
       await Userpost.save();
-      console.log("comment done : ", Userpost);
+      comment = await comment.populate("user");
+      // newComment(comment);  if we dont use redis and worker
+      let job = queue.create("emails", comment).save(function (err) {
+        if (err) {
+          console.log("error in sending comment to the queue : " + err);
+        }
+        console.log("new job created : " + job.id);
+      });
+
+      if (req.xhr) {
+        return res.status(200).json({
+          data: {
+            comment: comment,
+          },
+          message: "Comment Created",
+        });
+      }
+
       res.redirect("/");
     }
   } catch (err) {
@@ -43,6 +57,14 @@ exports.deleteComment = async (req, res) => {
       await Post.findByIdAndUpdate(postId, {
         $pull: { comments: req.params.id },
       });
+      if (req.xhr) {
+        return res.status(200).json({
+          data: {
+            comment_id: req.params.id,
+          },
+          message: "Comment delted",
+        });
+      }
       return res.redirect("back");
     }
     console.log("error in delete comment : ");

@@ -29,4 +29,19 @@ router.post(
 
 router.get("/sign-out", destroySession);
 
+//google auth routes
+
+// send request go google
+router.get(
+  "/auth/google",
+  passport.authenticate("google", { scope: ["profile", "email"] })
+);
+
+// getting request back from google
+router.get(
+  "/auth/google/callback",
+  passport.authenticate("google", { failureRedirect: "/user/sign-in" }),
+  createSession
+);
+
 module.exports = router;

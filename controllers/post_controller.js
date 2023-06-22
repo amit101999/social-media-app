@@ -7,6 +7,16 @@ exports.createPost = async (req, res) => {
       content: req.body.content,
       user: req.user._id,
     });
+
+    if (req.xhr) {
+      return res.status(200).json({
+        data: {
+          post: post,
+        },
+        message: "Post Created!!",
+      });
+    }
+
     return res.redirect("back");
   } catch (err) {
     console.log("error in creating user post");
@@ -18,13 +28,22 @@ exports.deletePost = async (req, res) => {
     const post = await Post.findById(req.params.id);
 
     if (!post) {
-      console.log("No post found");
+      console.log("No post found :", req.params);
     }
     // .id is mongoose string id for _id from user
     if (post.user == req.user.id) {
       await post.deleteOne();
       await Comment.deleteMany({ post: req.params.id });
-      console.log("Post deleted");
+
+      if (req.xhr) {
+        return res.status(200).json({
+          data: {
+            post_id: req.params.id,
+          },
+          message: "Post Deleted",
+        });
+      }
+
       return res.redirect("back");
     } else {
       return res.redirect("back");

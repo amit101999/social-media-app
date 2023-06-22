@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 const db = mongoose
-  .connect("mongodb+srv://amit:amit@social-media-app.leh27va.mongodb.net/")
+  .connect("mongodb+srv://amit:amit1999@social-media-app.leh27va.mongodb.net/")
   .then(() => {
     console.log("mongoDb connected");
   })

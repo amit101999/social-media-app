@@ -6,7 +6,7 @@
     <% if(locals.user){ %>
     <p id="user-tag">Time Line</p>
     <section id="feed-posts">
-      <form action="/posts/create" id="new-form-post" method="POST">
+      <form action="/posts/create" id="new-post-form" method="POST">
         <div class="textarea">
           <textarea
             name="content"
@@ -20,10 +20,12 @@
       </form>
       <% }%>
     </section>
-    <section id="post-container">
-      <% for( item of posts){ %>
-      <!-- if user is logged in and the current user is the one who is deleting their post not someone else is deting post -->
-      <%- include('_post') %> <% } %>
+    <section id="posts-list-container">
+      <ul>
+        <% for( post of posts){ %>
+        <!-- if user is logged in and the current user is the one who is deleting their post not someone else is deting post -->
+        <%- include('_post') %> <% } %>
+      </ul>
     </section>
   </section>
 
@@ -37,3 +39,4 @@
     <%} %>
   </section>
 </div>
+<script src="/js/home_posts.js"></script>

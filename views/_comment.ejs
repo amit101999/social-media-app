@@ -1,8 +1,14 @@
-<li><%= comment.content %></li>
-<li><%= item.user.name %></li>
-<% if(locals.user && locals.user.id === comment.user.id){ %>
-<li>
-  Delete Post
-  <a href="/comment/delete/<%= comment._id %>">delete</a>
+<li id="comment-<%= comment._id %>">
+  <p>
+    <% if (locals.user && locals.user.id == comment.user.id){ %>
+
+    <small>
+      <a class="delete-comment-button" href="/comment/delete/<%= comment.id %>"
+        >DELETE</a
+      >
+    </small>
+    <% } %> <%= comment.content %>
+    <br />
+    <small> <%= comment.user.name %> </small>
+  </p>
 </li>
-<% } %>
