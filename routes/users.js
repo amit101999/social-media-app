@@ -8,6 +8,10 @@ const {
   createSession,
   destroySession,
   updateUser,
+  forgotPassword,
+  checkEmail,
+  resetPassword,
+  resetUserPassword,
 } = require("../controllers/user_controller");
 
 const passport = require("passport");
@@ -43,5 +47,10 @@ router.get(
   passport.authenticate("google", { failureRedirect: "/user/sign-in" }),
   createSession
 );
+
+router.get("/forgot/password", forgotPassword);
+router.post("/forgot/password/", checkEmail);
+router.get("/forgot/password/reset/:id/:token", resetPassword);
+router.post("/forgot/password/reset/:id/:token", resetUserPassword);
 
 module.exports = router;

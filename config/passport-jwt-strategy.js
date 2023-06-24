@@ -13,6 +13,7 @@ let options = {
 passport.use(
   new JWTStrategy(options, async (jwtPayload, next) => {
     const user = await User.findById(jwtPayload._id);
+    console.log("user from jwt pasport :", user);
     if (!user) {
       console.log("error ing finding user ");
       return next(null, false);

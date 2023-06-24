@@ -18,7 +18,6 @@ passport.use(
         let user = await User.findOne({ email: profile.emails[0].value });
         // if we have user in db then set req.user = user
         if (user) {
-          console.log(profile);
           return next(null, user);
         } else {
           // if user is not in our db

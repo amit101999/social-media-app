@@ -3,6 +3,8 @@
 const User = require("../models/user");
 const fs = require("fs");
 const path = require("path");
+const jwt = require("jsonwebtoken");
+const { transporter } = require("../config/nodemailer");
 
 module.exports.profile = async (req, res) => {
   try {
@@ -116,4 +118,84 @@ exports.destroySession = (req, res, next) => {
   req.flash("success", "Loggout  Successfully");
   //created flash message
   return res.redirect("/");
+};
+
+//forgot password
+
+exports.forgotPassword = (req, res) => {
+  return res.render("check_email", {});
+};
+
+exports.checkEmail = async (req, res) => {
+  try {
+    const user = await User.findOne({ email: req.body.email });
+    if (user) {
+      const payload = {
+        email: user.email,
+        id: user._id,
+      };
+      const token = jwt.sign(payload, "AMIT", { expiresIn: "10m" });
+
+      //sending reset link to email
+      const link = `http://localhost:4000/user/forgot/password/reset/${user._id}/${token}`;
+      await transporter.sendMail(
+        {
+          from: "amitthakur10sep@gmail.com", // sender address
+          to: `${req.body.email}`, // list of receivers
+          subject: "Pasword reset link", // Subject line
+          html: `<a href=${link} >Click here to reset password</a>`, // html body
+        },
+        (err) => {
+          if ((err, info)) {
+            console.log("error in sending mail : ", err);
+            return;
+          }
+          console.log("mail send", info);
+          return;
+        }
+      );
+
+      return res.send(`passport reset link has been send to ur email`);
+    }
+    return res.send("user not found with given email address");
+  } catch (err) {
+    console.log("error : ", err);
+    return res.send("user not found with given email address");
+  }
+};
+
+exports.resetPassword = (req, res) => {
+  const { token, id } = req.params;
+  try {
+    //verifying token
+    const payload = jwt.verify(token, "AMIT");
+    return res.render("forgot_password");
+  } catch (err) {
+    return res.send("link expired!!! try again");
+  }
+};
+
+exports.resetUserPassword = async (req, res) => {
+  try {
+    const { token, id } = req.params;
+    const { password, confirmPassword } = req.body;
+    //verifying token
+    const payload = jwt.verify(token, "AMIT");
+    if (password === confirmPassword) {
+      await User.findByIdAndUpdate(
+        { _id: id },
+        {
+          $set: {
+            password: password,
+          },
+        }
+      );
+      return res.redirect("/");
+      jwt.sign("", "AMIT", { expiresIn: "0" });
+    } else {
+      return res.send("password and confirmPassword doesnt match try again");
+    }
+  } catch (err) {
+    return res.send("link expired!!! try again from reset password function");
+  }
 };
