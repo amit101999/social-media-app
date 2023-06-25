@@ -6,7 +6,7 @@ const likesSchema = new mongoose.Schema(
       type: mongoose.Schema.ObjectId,
     },
     likeable: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: mongoose.Schema.ObjectId,
       required: true,
       refPath: "onModel",
     },

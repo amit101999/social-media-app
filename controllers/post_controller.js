@@ -1,5 +1,6 @@
 const Post = require("../models/posts");
 const Comment = require("../models/comment");
+const Like = require("../models/likes");
 
 exports.createPost = async (req, res) => {
   try {
@@ -32,6 +33,9 @@ exports.deletePost = async (req, res) => {
     }
     // .id is mongoose string id for _id from user
     if (post.user == req.user.id) {
+      await Like.deleteMany({ likeable: post, onModel: "Post" });
+      await Like.deleteMany({ _id: { $in: post.comments } });
+
       await post.deleteOne();
       await Comment.deleteMany({ post: req.params.id });
 

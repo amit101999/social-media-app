@@ -11,4 +11,12 @@
     <br />
     <small> <%= comment.user.name %> </small>
   </p>
+  <a
+    class="toggle-like-button"
+    data-likes="<%= comment.likes.length %>"
+    href="/likes/toggle/?id=<%=comment._id%>&type=Comment"
+  >
+    <%= comment.likes.length %> Likes
+  </a>
 </li>
+<script src="/js/toggle_likes.js"></script>

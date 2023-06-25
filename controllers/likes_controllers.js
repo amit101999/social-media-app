@@ -1,50 +1,56 @@
-const Likes = require("../models/likes");
+const Like = require("../models/likes");
 const Comment = require("../models/comment");
 const Post = require("../models/posts");
 
 exports.likesToggle = async (req, res) => {
   try {
+    // likes/toggle/?id=abcdef&type=Post
     let likeable;
     let deleted = false;
-    if ((req.query.type = "Post")) {
+
+    if (req.query.type == "Post") {
       likeable = await Post.findById(req.query.id).populate("likes");
     } else {
       likeable = await Comment.findById(req.query.id).populate("likes");
     }
 
-    // check if likes is already present or not
-    let existingLike = await Like.finOne({
+    // check if a like already exists
+    let existingLike = await Like.findOne({
       likeable: req.query.id,
       onModel: req.query.type,
-      user: req.user,
+      user: req.user._id,
     });
 
-    // if like already exists
+    // if a like already exists then delete it
     if (existingLike) {
-      // deleting from post or comment array likes field
-      likeable.likes.pull(existingLike.id);
+      likeable.likes.pull(existingLike._id);
       likeable.save();
 
-      existingLike.remove();
-
+      await existingLike.deleteOne();
       deleted = true;
     } else {
-      //creating new Like object
-      let newLike = await new Like.create({
-        user: req.user,
+      // else make a new like
+
+      let newLike = await Like.create({
+        user: req.user._id,
         likeable: req.query.id,
-        onModel: req.query.types,
+        onModel: req.query.type,
       });
+
       likeable.likes.push(newLike._id);
       likeable.save();
     }
+
     return res.status(200).json({
-      message: "request success",
-      deleted: deleted,
+      message: "Request successful!",
+      data: {
+        deleted: deleted,
+      },
     });
   } catch (err) {
-    return res.status(500).json({
-      message: "error in likes ",
+    console.log(err);
+    return res.json(500, {
+      message: "Internal Server Error",
     });
   }
 };

@@ -1,5 +1,6 @@
 const Comment = require("../models/comment");
 const Post = require("../models/posts");
+const Like = require("../models/likes");
 // const { newComment } = require("../mailers/comments_mailer");
 const commnetEmailMailer = require("../mailers/comments_mailer");
 const queue = require("../config/kue");
@@ -53,7 +54,14 @@ exports.deleteComment = async (req, res) => {
     // .id is mongoose string id for _id from user
     if (comment.user == req.user.id) {
       let postId = comment.post;
+
+      // deleting likes related to comment comment
+      await Like.deleteMany({ likeable: comment._id, onModel: "Comment" });
+
+      // deleting comment
       await comment.deleteOne();
+
+      //removing from comment ID from Post Array
       await Post.findByIdAndUpdate(postId, {
         $pull: { comments: req.params.id },
       });
