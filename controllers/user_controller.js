@@ -103,6 +103,7 @@ exports.createUser = async (req, res) => {
 
 exports.createSession = async (req, res) => {
   //created flash message
+
   req.flash("success", "LoggedIn Successfully");
 
   return res.redirect("/");

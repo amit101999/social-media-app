@@ -15,12 +15,19 @@ const {
 } = require("../controllers/user_controller");
 
 const passport = require("passport");
+const {
+  addFriends,
+  deleteFriends,
+} = require("../controllers/friends_controller");
 
 router.get("/profile/:id", passport.checkAuthention, profile);
 router.post("/update/:id", passport.checkAuthention, updateUser);
 router.get("/sign-in", signIn);
 router.get("/sign-up", signUp);
 router.post("/create", createUser);
+
+router.get("/add/friend", addFriends);
+router.get("/delete/friend", deleteFriends);
 
 //here middleware is passport
 router.post(

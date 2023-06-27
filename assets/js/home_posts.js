@@ -16,7 +16,7 @@
           deletePost($(" .delete-post-button", newPost));
           // call the create comment class
           new PostComments(data.data.post._id);
-          new ToggleLike(" .toggle-like-button", newPost);
+          new ToggleLike($(" .toggle-like-button", newPost));
 
           new Noty({
             theme: "relax",
@@ -102,8 +102,8 @@
   let convertPostsToAjax = function () {
     $("#posts-list-container>ul>li").each(function () {
       let self = $(this);
-      // let deleteButton = $(" .delete-post-button", self);
-      // deletePost(deleteButton);
+      let deleteButton = $(" .delete-post-button", self);
+      deletePost(deleteButton);
 
       // get the post's id by splitting the id attribute
       let postId = self.prop("id").split("-")[1];

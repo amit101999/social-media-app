@@ -1,10 +1,10 @@
 <!-- this page will be render in the body tag of the layouts.ejs -->
 <!-- can add css and scripts here and will render in layouts.ejs -->
-<h1>from user Profile</h1>
-<img src="<%= user.avatar %>"  alt="User Profile" width="100"/>
 
 
 <%  if(user.id == profile_user.id) { %>
+    <h1>from user Profile</h1>
+    <img src="<%= user.avatar %>"  alt="User Profile" width="100"/>
         <!-- if user matches with current user then show user update form -->
             <form action="/user/update/<%= profile_user.id %>" method="POST" enctype="multipart/form-data">
                 <input type="text"  placeholder="name" name="name" value= "<%= profile_user.name %>" />
@@ -14,6 +14,16 @@
                 </form>
         <!-- other wise show user profile -->
     <% } else {%>
+        <img src="<%= profile_user.avatar %>"  alt="User Profile" width="100"/>
         <%= profile_user.name %></h1>
+        <br>
         <%= profile_user.email %></h1>
+        <br>
+        <br>
+        <% if(user.friends.includes(profile_user._id)) {%>
+            <p> Remove <a href="/user/delete/friend/?to=<%=profile_user._id %>&from=<%=user.id%>"><%=profile_user.name %></a> as a friend </p>
+            <% } else{ %>
+                <p> Click here to add this <a href="/user/add/friend/?to=<%=profile_user._id %>&from=<%=user.id%>"><%=profile_user.name %></a> as a friend </p>
+        <% } %>
+
         <% } %>
