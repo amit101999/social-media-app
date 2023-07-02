@@ -1,3 +1,6 @@
+body {
+  background-color: white; }
+
 header {
   display: flex;
   flex-direction: row;
@@ -6,8 +9,8 @@ header {
   height: 50px;
   width: 100%vw;
   align-items: center;
-  background-color: #B6C3D3;
-  color: #000000; }
+  background-color: #25A18E;
+  color: #F8FBF8; }
   header p {
     font-size: 2rem;
     font-weight: bolder;

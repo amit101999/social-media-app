@@ -4,19 +4,20 @@
 <div class="timeline">
   <section class="main">
     <% if(locals.user){ %>
-    <p id="user-tag">Time Line</p>
+    <h2 id="user-tag">Time Line</h2>
     <section id="feed-posts">
       <form action="/posts/create" id="new-post-form" method="POST">
         <div class="textarea">
           <textarea
             name="content"
-            rows="2"
-            cols="55"
+            rows="5"
             required
             placeholder="Write Something here!"
           ></textarea>
         </div>
-        <input type="submit" value="Share Your Thoughts" />
+        <div id="post-submit">
+          <input type="submit" value="Share Your Thoughts" />
+        </div>
       </form>
       <% }%>
     </section>
@@ -38,6 +39,7 @@
 
     <%} %>
   </section>
+  <!-- <section><%- include('_chat_box') %></section> -->
 </div>
 <script src="js/home_posts.js"></script>
 <script src="js/comments.js"></script>
@@ -49,3 +51,10 @@
     console.log(toggleLike);
   });
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.0/socket.io.js"></script>
+<script src="/js/chat_engine.js"></script>
+<% if (locals.user) { %>
+<script>
+  new chatEngine("user-chat-box", "<%= locals.user.email %>");
+</script>
+<% } %>

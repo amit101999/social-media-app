@@ -1,29 +1,28 @@
 {
   "name": "social-media",
   "version": "1.0.0",
-  "description": "my own social media web app only using backend framework",
+  "description": "",
   "main": "index.js",
-  "author": "amit thakur",
-  "license": "MIT",
-  "engines": {
-    "node": ">=14.20.1"
-  },
   "scripts": {
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "prod" : "nodemon index.js" 
   },
+  "author": "amit thakur",
+  "license": "ISC",
   "dependencies": {
     "connect-flash": "^0.1.1",
     "connect-mongo": "^5.0.0",
     "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
     "crypto": "^1.0.1",
-    "dotenv": "^16.1.4",
+    "dotenv": "^16.3.1",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
     "express-ejs-layouts": "^2.5.1",
     "express-session": "^1.17.3",
     "jsonwebtoken": "^9.0.0",
     "kue": "^0.11.6",
-    "mongoose": "^7.2.2",
+    "mongoose": "^7.3.1",
     "multer": "^1.4.5-lts.1",
     "node-sass-middleware": "^1.0.1",
     "nodemailer": "^6.9.3",
@@ -32,6 +31,6 @@
     "passport-google-oauth": "^2.0.0",
     "passport-jwt": "^4.0.1",
     "passport-local": "^1.0.0",
-    "randomstring": "^1.3.0"
+    "socket.io": "^4.7.1"
   }
 }

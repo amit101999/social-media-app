@@ -1,13 +1,10 @@
 <link rel="stylesheet" href="/css/signUp.css" />
 <section>
-  <p>Join the conversation that matters!</p>
-
   <div class="auth-page">
     <div class="left-section"></div>
     <div class="right-section">
-      <div class="app-logo"></div>
-      <div class="app-tagline"></div>
       <div class="user-details">
+        <h2 class="signIn">Register</h2>
         <form action="/user/create" method="POST">
           <div class="name">
             <input
@@ -41,7 +38,7 @@
               required
             />
           </div>
-          <div>
+          <div class="btn">
             <button>
               <input type="submit" value="Create Account" />
             </button>
@@ -50,6 +47,9 @@
             </button>
           </div>
         </form>
+        <p class="login-in">
+          <a href="/user/sign-in">Already have a account?</a>
+        </p>
       </div>
     </div>
   </div>

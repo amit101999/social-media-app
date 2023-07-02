@@ -1,12 +1,10 @@
 <link rel="stylesheet" href="/css/signUp.css" />
 <section>
-  <p class="signIn">Sign In</p>
   <div class="auth-page lg">
     <div class="left-section"></div>
     <div class="right-section">
-      <div class="app-logo"></div>
-      <div class="app-tagline"></div>
       <div class="user-details">
+        <h2 class="signIn">Sign In</h2>
         <form action="/user/create-session" method="POST">
           <div class="email">
             <input
@@ -34,13 +32,12 @@
           </div>
         </form>
         <div class="forgotPassword">
-          <a href="/user/forgot/Password">Forgot Password </a>
+          <a href="/user/forgot/Password">Forgot Password! </a>
         </div>
 
-        <div class="create-btn">
-          <p>dont have Account?</p>
-          <a href="/user/sign-up">Register Now </a>
-        </div>
+        <p>
+          <a href="/user/sign-up">Create Account? </a>
+        </p>
       </div>
     </div>
   </div>

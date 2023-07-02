@@ -5,6 +5,7 @@ const fs = require("fs");
 const path = require("path");
 const jwt = require("jsonwebtoken");
 const { transporter } = require("../config/nodemailer");
+const env = require("../config/enviroment");
 
 module.exports.profile = async (req, res) => {
   try {
@@ -135,7 +136,7 @@ exports.checkEmail = async (req, res) => {
         email: user.email,
         id: user._id,
       };
-      const token = jwt.sign(payload, "AMIT", { expiresIn: "10m" });
+      const token = jwt.sign(payload, env.jwt_secret, { expiresIn: "10m" });
 
       //sending reset link to email
       const link = `http://localhost:4000/user/forgot/password/reset/${user._id}/${token}`;
@@ -169,7 +170,7 @@ exports.resetPassword = (req, res) => {
   const { token, id } = req.params;
   try {
     //verifying token
-    const payload = jwt.verify(token, "AMIT");
+    const payload = jwt.verify(token, env.jwt_secret);
     return res.render("forgot_password");
   } catch (err) {
     return res.send("link expired!!! try again");
@@ -181,7 +182,7 @@ exports.resetUserPassword = async (req, res) => {
     const { token, id } = req.params;
     const { password, confirmPassword } = req.body;
     //verifying token
-    const payload = jwt.verify(token, "AMIT");
+    const payload = jwt.verify(token, env.jwt_secret);
     if (password === confirmPassword) {
       await User.findByIdAndUpdate(
         { _id: id },

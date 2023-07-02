@@ -1,90 +1,89 @@
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: white;
-    opacity: 1; /* Firefox */
+    opacity: 0.7; /* Firefox */
   }
 
+  a{
+    color: white;
+    text-decoration: none;
+}
 section{    
-    background-color: #B6C3D3;
-    height: calc(100vh - 100px);
-    p{
-        font-size:1rem;
-        font-weight: bolder;
-        color:white;
-        font-style: italic;
-        margin: 0px;
-        padding:0px;
-        margin-left:10%;
-        font-size: 1.5rem;
-        padding-top: 20px;
-    }
+   
     .signIn{
-        padding-top:10px;
-        padding-bottom: 10px;
+        padding-top:-10px;
+        color: white;
+        text-decoration: underline;
     }
     
     .auth-page{
-        width: 80%;
+        width: 60%;
         display: flex;
         margin:auto;
+        margin-top: 40px;
         border-radius:15px ;
-        background-color: rgb(182,195,211);
+        background-color: #25A18E;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-        height: 70vh;
+        padding-bottom: 5px;
     }
 
     
     .left-section{
-        flex-basis: 40%;
-        border: none;
-        border-right: 1px solid black;
+        flex-basis: 50%;
+      
     }
     .right-section{
-        flex-basis: 60%;
-        border-left: 1px solid black;
-
+        flex-basis: 50%;
         form{
-            margin-top:50px;
-            margin-left: 50px;
+            margin-top:20px;
+            margin-left: 30px;
 
             .forgotPassword{
                 margin-top: 0pxs;
             }
 
         }
+        .login-in{
+            margin-top:20px;
+            font-size: 20px;
+        }
 
         div {
+            background-color:#25A18E;
             input{
-                width: 50%;
+                width: 70%;
                 height : 30px;
                 margin-bottom: 30px;
                 border:none;
                 outline: none;
                 border-bottom: 2px solid white;
                 border-bottom-left-radius: 5px;
-                background-color:#B6C3D3;
+                background-color:#25A18E;
                 font-size: 1rem;
                 color:white;
 
             }
+            
             button{
-                width: 50%;
+                width: 80%;
                 height : 35px;
-                background-color: black;
                 outline: none;
+                background-color: #1E8576;
                 margin-bottom: 5px;
                 font-size: 1rem;
                 border: none;
                 border-radius: 4px;
 
-                input{
+                input , a{
                     width: 100%;
                     height : 32px; 
-                    background-color: black;
+                    background-color: rgba(0,0,0,0);
                     color:white;
                     font-size:1.2rem ;
                     border-bottom: none;
+                    text-decoration: none;
+
                 }
-                input:hover{
+                input:hover , a:hover{
                         text-decoration: underline;
                         cursor: pointer;
                 }
@@ -92,44 +91,74 @@ section{
             }
 
             .forgotPassword{
-                margin-left: 210px;
+                width: 60%;
+                margin: auto;
+                text-align: end;
+                // border:1px solid red;
                 a{
                     color: white;
-                    font-size: 1.2rem;
+                    font-size: 1rem;
                 }
                 a:hover{
-                        font-weight: bolder;
+                        text-decoration: underline;
                 }
             }
             
         }
-        .create-btn{
-            display: flex;
-            // align-items: center;
-            P{
-                color: white;
-                font-size:1.2rem;
-                font-weight: normal;
-                margin-left: 50px;
+        
+        p{
+            color:white;
+            text-align: center;
+            padding-top: 20px;
+            font-size: 20px;
+            
+            a:hover{
+                text-decoration: underline;
             }
-
-                a{  
-                    width: fit-content;
-                    margin-top: 20px;
-                    color:black;
-                    font-size: 1.2rem;
-                   margin-left: 5px;
-                   text-decoration: none;
-                   border-bottom: 2px solid black;
-                }
-                a:hover{
-                    border-bottom: none;
-                    cursor: pointer;
-                }
-
-
         }
-      
 
     }
+}
+
+@media (max-width: 500px) {
+    
+  section {
+    .auth-page{
+        width: 90%;
+        display: block;
+        .left-section{
+            border-right: none;
+            display:none;
+        }
+        .right-section{
+            form{
+                padding: 15px 15px 0px 15px;
+                margin-top:0px;
+                padding-top:20px ;
+                margin-left: 0px;
+                
+                input{
+                    margin-left: 30px;
+                    width: 70%;
+                }
+                .btn input{
+                    width:100%;
+                    margin-left:0px;
+                }
+                
+                  button{
+                    margin-left: 30px;
+                  }
+            
+        }
+        .forgotPassword{
+            width: 70%;
+        }
+        .signIn{
+            padding-top: 20px;
+            margin-left: 30px;
+        }
+    }
+    }
+  }
 }

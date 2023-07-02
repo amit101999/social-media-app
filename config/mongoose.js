@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
 require("dotenv").config();
+const env = require('../config/enviroment')
 
 const db = mongoose
-  .connect("mongodb+srv://amit:amit1999@social-media-app.leh27va.mongodb.net/")
+  .connect(env.mongo_URL)
   .then(() => {
     console.log("mongoDb connected");
   })

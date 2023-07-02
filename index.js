@@ -1,10 +1,16 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
+var cors = require("cors");
 const app = express();
 const PORT = 8000;
+const path = require('path')
 require("dotenv").config();
+app.use(cors());
 //DB
 const db = require("./config/mongoose");
+
+//all developemnet and productions keys are here
+const env= require("./config/enviroment") 
 
 //session
 const session = require("express-session");
@@ -24,14 +30,21 @@ const flash = require("connect-flash");
 
 const cutsomMiddleware = require("./config/middleware");
 
+// sockets
+const chatServer = require("http").Server(app);
+const chatSocket = require("./config/chat_sockets").chatSocket(chatServer);
+chatServer.listen(5000);
+console.log("chat server started");
+
 //acquiring routes
 const mainroutes = require("./routes/index");
 
 app.use(
   sassMiddleware({
     /* Options */
-    src: "./assets/scss",
-    dest: "./assets/css", // where to put css files
+    // this  will make add current path with assests/scss
+    src: path.join(__dirname , env.assest_path,'/scss'),
+    dest: path.join(__dirname , env.assest_path,'/css'), // where to put css files
     debug: true,
     outputStyle: "extended",
     prefix: "/css", // Where prefix to look for css files
@@ -45,7 +58,7 @@ app.use(express.urlencoded());
 app.use(cookieParser());
 
 //For Static files
-app.use(express.static("./assets"));
+app.use(express.static(env.assest_path));
 //make the uploads path availabel to the browser
 app.use("/upload", express.static(__dirname + "/upload"));
 
@@ -66,7 +79,7 @@ app.use(
   session({
     name: "social_app",
     // change secret beofore depolyment in production
-    secret: "mySecrete",
+    secret: env.session_cookie_secrete_key,
     resave: false,
     saveUninitialized: false,
     cookie: {
@@ -103,7 +116,7 @@ app.use("/", mainroutes);
 //Server configuration
 app.listen(process.env.PORT, (err) => {
   if (err) {
-    console.error("error : ", err);
+    console.error("error  in server connection: ", err);
   }
   console.log(`server started at ${process.env.PORT}`);
 });

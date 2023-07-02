@@ -24,40 +24,75 @@
 
       #feed-posts{
           margin:auto;
-            width: 40%;
-            margin-top: 30px;
+          width: 60%;
+          margin-top: 30px;
           padding: 10px;
           border-radius: 8px;
-          border: 2px solid #5D656A ;
-            box-shadow: 7px 5px 8px 5px rgba(90,98,104,1);
+          border: 1px solid black ;
+          box-shadow: 7px 5px 8px 5px rgba(90,98,104,1);
 
             form{
               margin-top: 20px;
                 textarea{
-                  border: none;
+                  border: 2px solid black;
+                  border-radius:10px ;
+                  padding: 10px;
+                  width: 90%;
                 }
-                input{
-                  border:none;
-                  background-color: black;
-                  color: white;
-                  height :fit-content;
-                  border-radius: 10px ;
-                  padding: 0.5rem 0.5rem;
-                  font-size:var(---small-text-size);
-                  width: fit-content;
-                  margin-top: 10px;
+                #post-submit{
+                  width: 100%;
+                  text-align: center;
+                  input{
+                    border:none;
+                    background-color: #25A18E;
+                    color: white;
+                    height :fit-content;
+                    border-radius: 10px ;
+                    padding: 0.5rem 0.5rem;
+                    font-size:var(---small-text-size);
+                    width: 50%;
+                    margin-top: 10px;
+                    text-decoration: underline;
+                  }
+                  input:hover{
+                    text-decoration: none;
+                    cursor: pointer;
+                  }
                 }
             }
         }
         #post-container{
-          
           margin:auto;
           margin-top: 30px;
           width: 80%;
         }
     }
-    .user-friends{
+    #user-friends{
       flex-basis: 20%;
+      height: 70vh;
+      border: 2px solid red;
+    }
+}
+
+@media  (max-width:500px) {
+
+    .timeline .main{
+        flex-basis: 100%;
+        width: 100%;
+        #feed-posts{
+          width: 90vw;
+          margin:5px;     
+          form{
+            input{
+              width: 80vw;
+              font-size:12px;
+            }
+          }     
+        }
+    }
+    .timeline #user-friends{
+      flex-basis: 0%;
+  display: none;
     }
 }
 
