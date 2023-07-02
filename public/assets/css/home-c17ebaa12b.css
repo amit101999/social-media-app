@@ -1,0 +1,70 @@
+* {
+  margin: 0px;
+  padding: 0px; }
+
+.timeline {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin: auto; }
+  .timeline .main {
+    flex-basis: 80%;
+    padding-top: 20px; }
+    .timeline .main #user-tag {
+      font-weight: bold;
+      font-size: var(--medium-text-size);
+      text-align: center; }
+    .timeline .main #feed-posts {
+      margin: auto;
+      width: 60%;
+      margin-top: 30px;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid black;
+      box-shadow: 7px 5px 8px 5px #5a6268; }
+      .timeline .main #feed-posts form {
+        margin-top: 20px; }
+        .timeline .main #feed-posts form textarea {
+          border: 2px solid black;
+          border-radius: 10px;
+          padding: 10px;
+          width: 90%; }
+        .timeline .main #feed-posts form #post-submit {
+          width: 100%;
+          text-align: center; }
+          .timeline .main #feed-posts form #post-submit input {
+            border: none;
+            background-color: #25A18E;
+            color: white;
+            height: fit-content;
+            border-radius: 10px;
+            padding: 0.5rem 0.5rem;
+            font-size: var(---small-text-size);
+            width: 50%;
+            margin-top: 10px;
+            text-decoration: underline; }
+          .timeline .main #feed-posts form #post-submit input:hover {
+            text-decoration: none;
+            cursor: pointer; }
+    .timeline .main #post-container {
+      margin: auto;
+      margin-top: 30px;
+      width: 80%; }
+  .timeline #user-friends {
+    flex-basis: 20%;
+    height: 70vh;
+    border: 2px solid red; }
+
+@media (max-width: 500px) {
+  .timeline .main {
+    flex-basis: 100%;
+    width: 100%; }
+    .timeline .main #feed-posts {
+      width: 90vw;
+      margin: 5px; }
+      .timeline .main #feed-posts form input {
+        width: 80vw;
+        font-size: 12px; }
+  .timeline #user-friends {
+    flex-basis: 0%;
+    display: none; } }

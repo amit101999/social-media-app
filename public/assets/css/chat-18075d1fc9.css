@@ -1,0 +1,22 @@
+#user-chat-box {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 400px;
+  padding: 10px;
+  border: 1px solid red; }
+  #user-chat-box ul li {
+    width: 100%; }
+    #user-chat-box ul li span {
+      border: 2px solid red;
+      font-size: large; }
+  #user-chat-box ul .self-message {
+    text-align: right; }
+  #user-chat-box #chat-message-input-container {
+    margin-left: 10%;
+    margin-top: 20px; }
+    #user-chat-box #chat-message-input-container input {
+      width: 60%; }
+    #user-chat-box #chat-message-input-container button {
+      font-size: medium;
+      border: 2px solid grey; }

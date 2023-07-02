@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 require("dotenv").config();
-const env = require('../config/enviroment')
-
+const env = require('./enviroment')
 const db = mongoose
   .connect(env.mongo_URL)
   .then(() => {

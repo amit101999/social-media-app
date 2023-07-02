@@ -7,7 +7,12 @@ const path = require('path')
 require("dotenv").config();
 app.use(cors());
 //DB
-const db = require("./config/mongoose");
+const db = require("./config/mongoose.js");
+
+const loger = require('morgan')
+
+//calling vew helper
+require("./config/vew-helper.js")(app)
 
 //all developemnet and productions keys are here
 const env= require("./config/enviroment") 
@@ -39,17 +44,19 @@ console.log("chat server started");
 //acquiring routes
 const mainroutes = require("./routes/index");
 
-app.use(
-  sassMiddleware({
-    /* Options */
-    // this  will make add current path with assests/scss
-    src: path.join(__dirname , env.assest_path,'/scss'),
-    dest: path.join(__dirname , env.assest_path,'/css'), // where to put css files
-    debug: true,
-    outputStyle: "extended",
-    prefix: "/css", // Where prefix to look for css files
-  })
-);
+if(env.name = "development"){
+  app.use(
+    sassMiddleware({
+      /* Options */
+      // this  will make add current path with assests/scss
+      src: path.join(__dirname , env.assest_path,'/scss'),
+      dest: path.join(__dirname , env.assest_path,'/css'), // where to put css files
+      debug: true,
+      outputStyle: "extended",
+      prefix: "/css", // Where prefix to look for css files
+    })
+  );
+}
 
 //for corverting upcoming request data to readable data
 app.use(express.urlencoded());
@@ -61,6 +68,8 @@ app.use(cookieParser());
 app.use(express.static(env.assest_path));
 //make the uploads path availabel to the browser
 app.use("/upload", express.static(__dirname + "/upload"));
+
+app.use(loger(env.morgan.mode , env.morgan.options))
 
 // EJS Layout
 const expressLayouts = require("express-ejs-layouts");

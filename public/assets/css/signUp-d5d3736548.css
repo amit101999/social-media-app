@@ -1,0 +1,113 @@
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 0.7;
+  /* Firefox */ }
+
+a {
+  color: white;
+  text-decoration: none; }
+
+section .signIn {
+  padding-top: -10px;
+  color: white;
+  text-decoration: underline; }
+
+section .auth-page {
+  width: 60%;
+  display: flex;
+  margin: auto;
+  margin-top: 40px;
+  border-radius: 15px;
+  background-color: #25A18E;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding-bottom: 5px; }
+
+section .left-section {
+  flex-basis: 50%; }
+
+section .right-section {
+  flex-basis: 50%; }
+  section .right-section form {
+    margin-top: 20px;
+    margin-left: 30px; }
+    section .right-section form .forgotPassword {
+      margin-top: 0pxs; }
+  section .right-section .login-in {
+    margin-top: 20px;
+    font-size: 20px; }
+  section .right-section div {
+    background-color: #25A18E; }
+    section .right-section div input {
+      width: 70%;
+      height: 30px;
+      margin-bottom: 30px;
+      border: none;
+      outline: none;
+      border-bottom: 2px solid white;
+      border-bottom-left-radius: 5px;
+      background-color: #25A18E;
+      font-size: 1rem;
+      color: white; }
+    section .right-section div button {
+      width: 80%;
+      height: 35px;
+      outline: none;
+      background-color: #1E8576;
+      margin-bottom: 5px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 4px; }
+      section .right-section div button input, section .right-section div button a {
+        width: 100%;
+        height: 32px;
+        background-color: rgba(0, 0, 0, 0);
+        color: white;
+        font-size: 1.2rem;
+        border-bottom: none;
+        text-decoration: none; }
+      section .right-section div button input:hover, section .right-section div button a:hover {
+        text-decoration: underline;
+        cursor: pointer; }
+    section .right-section div .forgotPassword {
+      width: 60%;
+      margin: auto;
+      text-align: end; }
+      section .right-section div .forgotPassword a {
+        color: white;
+        font-size: 1rem; }
+      section .right-section div .forgotPassword a:hover {
+        text-decoration: underline; }
+  section .right-section p {
+    color: white;
+    text-align: center;
+    padding-top: 20px;
+    font-size: 20px; }
+    section .right-section p a:hover {
+      text-decoration: underline; }
+
+@media (max-width: 500px) {
+  section .auth-page {
+    width: 90%;
+    display: block; }
+    section .auth-page .left-section {
+      border-right: none;
+      display: none; }
+    section .auth-page .right-section form {
+      padding: 15px 15px 0px 15px;
+      margin-top: 0px;
+      padding-top: 20px;
+      margin-left: 0px; }
+      section .auth-page .right-section form input {
+        margin-left: 30px;
+        width: 70%; }
+      section .auth-page .right-section form .btn input {
+        width: 100%;
+        margin-left: 0px; }
+      section .auth-page .right-section form button {
+        margin-left: 30px; }
+    section .auth-page .right-section .forgotPassword {
+      width: 70%; }
+    section .auth-page .right-section .signIn {
+      padding-top: 20px;
+      margin-left: 30px; } }
