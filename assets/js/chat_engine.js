@@ -5,7 +5,8 @@ class chatEngine {
 
     // io is global object given by cdn used in the home.ejs
     //this will request connection with the server
-    this.socket = io.connect("http://localhost:5000");
+    // this.socket = io.connect("http://localhost:5000");
+    this.socket = io.connect("http://16.170.211.231/:5000");
     if (this.userEmail) {
       this.connectionHandler();
     }
