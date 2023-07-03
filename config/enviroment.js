@@ -44,7 +44,7 @@ const production = {
   assest_path: process.env.ASSET_PATH,
   session_cookie_secrete_key: process.env.SESSION_COOKIE_SECRET,
   mongo_URL:
-    process.env.mongo_URL,
+    process.env.MONGO_URL,
   smtp: {
     service: "gmail",
     host: "smtp.gmail.com",
