@@ -2,6 +2,8 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 var cors = require("cors");
 const app = express();
+//calling vew helper
+require("./config/vew-helper")(app)
 const PORT = 8000;
 const path = require('path')
 require("dotenv").config();
@@ -11,8 +13,7 @@ const db = require("./config/mongoose.js");
 
 const loger = require('morgan')
 
-//calling vew helper
-require("./config/vew-helper.js")(app)
+
 
 //all developemnet and productions keys are here
 const env= require("./config/enviroment") 
@@ -44,7 +45,7 @@ console.log("chat server started");
 //acquiring routes
 const mainroutes = require("./routes/index");
 
-if(env.name = "development"){
+if(env.name == "development"){
   app.use(
     sassMiddleware({
       /* Options */
