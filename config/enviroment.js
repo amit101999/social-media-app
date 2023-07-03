@@ -16,7 +16,7 @@ const development = {
   assest_path: "./assets",
   session_cookie_secrete_key: "SessionCookieKey",
   mongo_URL:
-    "mongodb+srv://amit:amit1999@social-media-app.leh27va.mongodb.net/",
+    'mongodb+srv://amit:amit1999@social-media-app.leh27va.mongodb.net/',
   smtp: {
     service: "gmail",
     host: "smtp.gmail.com",

@@ -60,7 +60,7 @@ if(env.name == "development"){
 }
 
 //for corverting upcoming request data to readable data
-app.use(express.urlencoded());
+app.use(express.urlencoded({extended:false}));
 
 // for cookies
 app.use(cookieParser());
