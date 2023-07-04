@@ -42,7 +42,7 @@ gulp.task('js', function(done){
 
 gulp.task('images', function(done){
     console.log('compressing images...');
-    gulp.src('./assets/**/*.+(png|jpg|gif|svg|jpeg)')
+    gulp.src('./upload/users/avatars/*.+(png|jpg|gif|svg|jpeg)')
     .pipe(imagemin())
     .pipe(rev())
     .pipe(gulp.dest('./public/assets'))

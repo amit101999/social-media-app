@@ -41,7 +41,7 @@
       <div>
         <div id="user-name">
           Posted By:
-          <a>${user}</a>
+          <a  href="/user/profile/${user._id}" >${user.name}</a>
         </div>
         <div class="user-content">
           <p>

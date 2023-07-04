@@ -56,7 +56,9 @@ class PostComments {
         <div id="comment-user-name">
           <p>
             Comment by :
-            <a href="">${comment.user.name}</a>
+            <a href="/user/profile/${comment.user._id}">
+            ${comment.user.name}
+            </a>
           </p>
         </div>
       </div>
