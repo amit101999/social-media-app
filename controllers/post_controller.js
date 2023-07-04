@@ -15,7 +15,8 @@ exports.createPost = async (req, res) => {
       return res.status(200).json({
         data: {
           post: post,
-          user: user,
+          user: user.name,
+          user_id :user._id
         },
         message: "Post Created!!",
       });

@@ -11,7 +11,7 @@
         url: "/posts/create",
         data: newPostForm.serialize(),
         success: function (data) {
-          let newPost = newPostDom(data.data.post, data.data.user);
+          let newPost = newPostDom(data.data.post, data.data.user , data.data.user_id);
           $("#posts-list-container>ul").prepend(newPost);
           deletePost($(" .delete-post-button", newPost));
           // call the create comment class
@@ -34,14 +34,14 @@
   };
 
   // method to create a post in DOM
-  let newPostDom = function (post, user) {
+  let newPostDom = function (post, user, user_id) {
     return $(`
     <li id="post-${post._id}">
     <div id="user-post">
       <div>
         <div id="user-name">
           Posted By:
-          <a  href="/user/profile/${user._id}" >${user.name}</a>
+          <a  href="/user/profile/${user_id}" >${user}</a>
         </div>
         <div class="user-content">
           <p>
