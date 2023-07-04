@@ -18,7 +18,7 @@ header {
   header button {
     width: 100px;
     height: 40px;
-    background-color: #000000;
+    background-color: #25A18E;
     border: none;
     border-radius: 5px; }
     header button a {
@@ -28,3 +28,12 @@ header {
       text-decoration: none; }
   header button:hover {
     opacity: 0.8; }
+
+@media (max-width: 500px) {
+  header {
+    padding-right: 5px; }
+    header p {
+      font-size: 1.5rem; }
+    header button {
+      background-color: none;
+      width: 60px; } }

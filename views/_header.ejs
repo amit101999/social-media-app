@@ -3,9 +3,17 @@
 <header>
   <p class="app-Name">Connect</p>
   <% if (locals.user){ %>
-  <button class="logout-btn">
-    <a href="/user/sign-out">Log out</a>
-  </button>
+    <div>
+      <button class="logout-btn">
+        <a href="/user/chat"> Chat</a>
+      </button>
+    <button class="logout-btn">
+      <a href="/user/sign-out">Logout</a>
+    </button>
+    <button class="profile-btn">
+      <a href="/user/profile/<%=locals.user._id%>">Profile</a>
+    </button>
+    </div>
   <%} else { %>
   <!-- <button class="login-btn">
     <a href="/user/sign-in">Log in</a>

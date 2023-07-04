@@ -201,3 +201,7 @@ exports.resetUserPassword = async (req, res) => {
     return res.send("link expired!!! try again from reset password function");
   }
 };
+
+exports.chatUi = (req, res)=>{
+  res.render('_chat_box')
+}

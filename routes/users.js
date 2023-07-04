@@ -12,6 +12,7 @@ const {
   checkEmail,
   resetPassword,
   resetUserPassword,
+  chatUi,
 } = require("../controllers/user_controller");
 
 const passport = require("passport");
@@ -59,5 +60,9 @@ router.get("/forgot/password", forgotPassword);
 router.post("/forgot/password/", checkEmail);
 router.get("/forgot/password/reset/:id/:token", resetPassword);
 router.post("/forgot/password/reset/:id/:token", resetUserPassword);
+
+
+//chat
+router.get('/chat' , chatUi )
 
 module.exports = router;

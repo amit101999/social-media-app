@@ -23,5 +23,10 @@ exports.chatSocket = function (socketServer) {
 
       io.in(data.chatroom).emit("user_joined", data);
     });
+
+    socket.on('send_message', function(data){
+      io.in(data.chatroom).emit('receive_message', data);
+  });
+  
   });
 };

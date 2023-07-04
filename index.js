@@ -52,6 +52,8 @@ if(env.name == "development"){
       // this  will make add current path with assests/scss
       src: path.join(__dirname , env.assest_path,'/scss'),
       dest: path.join(__dirname , env.assest_path,'/css'), // where to put css files
+      // src : 'assets/scss',
+      // dest:'assets/css',
       debug: true,
       outputStyle: "extended",
       prefix: "/css", // Where prefix to look for css files

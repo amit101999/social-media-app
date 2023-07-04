@@ -32,14 +32,17 @@
 
   <section id="user-friends">
     <h4>friends</h4>
+    <div>
     <% for(u of users){ %>
-    <p>
-      <a href="/user/profile/<%= u.id %>"><%= u.name %></a>
-    </p>
+      <p>
+        *<a href="/user/profile/<%= u.id %>"><%= u.name %></a>
+      </p>
+      <%} %>
 
-    <%} %>
+    </div>
+
   </section>
-  <!-- <section><%- include('_chat_box') %></section> -->
+  <section></section>
 </div>
 <script src="<%= assetPath('js/home_posts.js') %>"></script>
 <script src="<%= assetPath('js/comments.js') %> "></script>
@@ -51,10 +54,5 @@
     console.log(toggleLike);
   });
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.0/socket.io.js"></script>
-<script src="<%= assetPath('js/chat_engine.js') %> "></script>
-<% if (locals.user) { %>
-<script>
-  new chatEngine("user-chat-box", "<%= locals.user.email %>");
-</script>
-<% } %>
+
+

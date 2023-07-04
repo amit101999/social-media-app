@@ -1,22 +1,47 @@
-#user-chat-box {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 400px;
-  padding: 10px;
-  border: 1px solid red; }
-  #user-chat-box ul li {
-    width: 100%; }
-    #user-chat-box ul li span {
-      border: 2px solid red;
-      font-size: large; }
-  #user-chat-box ul .self-message {
-    text-align: right; }
-  #user-chat-box #chat-message-input-container {
-    margin-left: 10%;
-    margin-top: 20px; }
-    #user-chat-box #chat-message-input-container input {
-      width: 60%; }
-    #user-chat-box #chat-message-input-container button {
-      font-size: medium;
-      border: 2px solid grey; }
+.chat-page {
+  background-color: #DDDDDD; }
+  .chat-page #user-chat-box {
+    width: 400px;
+    padding: 10px;
+    margin: auto;
+    min-height: 80vh;
+    position: relative;
+    background-color: white; }
+    .chat-page #user-chat-box div p {
+      width: 100%; }
+      .chat-page #user-chat-box div p span {
+        border-radius: 5px;
+        padding: 5px;
+        border: 1px solid red;
+        font-size: large;
+        color: white; }
+      .chat-page #user-chat-box div p p {
+        color: grey; }
+    .chat-page #user-chat-box div .self-message {
+      text-align: right; }
+      .chat-page #user-chat-box div .self-message span {
+        background-color: #F8E5CB;
+        color: black;
+        border: 5px solid #F8E5CB; }
+    .chat-page #user-chat-box div .other-message span {
+      color: black;
+      background-color: #7E2DF0;
+      border: 5px solid #7E2DF0; }
+    .chat-page #user-chat-box #chat-message-input-container {
+      width: 100%;
+      position: absolute;
+      bottom: 5px; }
+      .chat-page #user-chat-box #chat-message-input-container input {
+        width: 60%;
+        border-radius: 5px;
+        height: 25px;
+        padding: 2px 5px;
+        border: none;
+        border: 2px solid black; }
+      .chat-page #user-chat-box #chat-message-input-container button {
+        border: none;
+        padding: 8px 10px;
+        width: 100px;
+        font-size: medium;
+        background-color: #25A18E;
+        border-radius: 5px; }
