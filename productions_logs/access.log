@@ -1469,3 +1469,7 @@
 ::1 - - [04/Jul/2023:14:42:37 +0000] "GET /user/profile/649ac83f6191b112c25b49a7 HTTP/1.1" 304 - "http://localhost:4000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
 ::1 - - [04/Jul/2023:14:42:44 +0000] "GET / HTTP/1.1" 200 9287 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
 ::1 - - [04/Jul/2023:14:42:53 +0000] "GET /posts/delete/64a42fb8405b538dddd54d8f HTTP/1.1" 200 72 "http://localhost:4000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
+::1 - - [04/Jul/2023:14:44:14 +0000] "GET / HTTP/1.1" 200 7461 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
+::1 - - [04/Jul/2023:14:44:16 +0000] "GET /user/chat HTTP/1.1" 200 2799 "http://localhost:4000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
+::1 - - [04/Jul/2023:14:44:31 +0000] "GET /user/sign-out HTTP/1.1" 302 46 "http://localhost:4000/user/chat" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
+::1 - - [04/Jul/2023:14:44:32 +0000] "GET / HTTP/1.1" 200 3065 "http://localhost:4000/user/chat" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
